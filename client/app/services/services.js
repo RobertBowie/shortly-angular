@@ -1,7 +1,20 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
-  // Your code here
+  // Function to shorten links
+  var shortenLink = function (link) {
+    // body...
+    return $http({
+      method: 'POST',
+      url: '/',
+      data: link
+    })
+    .then(function(resp) {
+      //find the returned format of the response to get to the shortened url
+      return resp.data;
+    });
+  };
+  // Function to add links to list??
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
