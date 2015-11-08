@@ -24,10 +24,21 @@ angular.module('shortly', [
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
     })
+    .otherwise({
+      redirectTo: '/links'
+    })
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
 })
+/*
+.controller('MainController', function($scope, $location) {
+  $scope.isActive = function(route) {
+    return route === $location.path();
+  };
+  console.log('here');
+})
+*/
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
   // its job is to stop all out going request
