@@ -2,19 +2,35 @@ angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
   // Function to shorten links
-  var shortenLink = function (link) {
+  var addLink = function (link) {
     // body...
     return $http({
       method: 'POST',
-      url: '/',
+      url: '/api/links',
       data: link
     })
     .then(function(resp) {
       //find the returned format of the response to get to the shortened url
+      console.log('addLink called. returned resp, resp.data: ', resp.data);
       return resp.data;
     });
   };
   // Function to add links to list??
+  var getLinks = function (data) {
+    return $http({
+      method: 'GET',
+      url: '/api/links'
+      // data: data // Do we need this?
+    })
+    .then(function (resp) {
+      console.log('getLinks called. returned resp, resp.data: ', typeof resp.data);
+      return resp.data; // what comes back here? JSON links table?
+    })
+  };
+  return {
+    addLink: addLink,
+    getLinks: getLinks
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!

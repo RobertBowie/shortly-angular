@@ -1,10 +1,10 @@
 <div id='container'>
   <h1>Links</h1>
   <form name="linkSearch">
-    <input type="text" ng-model="searchedLink" placeholder="filter">
+    <input type="text" ng-model="data.link" placeholder="filter">
   </form>
   <ul class="link">
-    <li ng-repeat="link in linklist | filter: searchedLink">
+    <li ng-repeat="link in linklist | filter: data.link">
     </li>
   </ul>
   <!-- Your html here -->

@@ -2,8 +2,8 @@ angular.module('shortly.shorten', [])
 
 .controller('ShortenController', function ($scope, $location, Links) {
   $scope.link = {};
-  $scope.shortenLink = function() {  
-    Links.shortenLink($scope.link)
+  $scope.addLink = function() {  
+    Links.addLink($scope.link)
       .then(function(shortLink) {
         //call the displayLink function
       })
